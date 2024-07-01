@@ -4,7 +4,7 @@ const { sequelize } = require('./models/index');
 const router = require("./routes/router");
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

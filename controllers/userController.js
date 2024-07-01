@@ -22,6 +22,15 @@ class UserController {
             res.status(500).json({ message: 'Error creating user', error: error.message });
         }
     }
+
+    async user_info(username) {
+        try {
+            const user_db = await User.findOne({ where: { username: `${username}`}});
+            return user_db;
+        } catch (error) {
+            res.status(500).json({ message: 'Error finding user', error: error.message});
+        }
+    }
 }
 
 module.exports = new UserController();
