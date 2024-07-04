@@ -20,7 +20,20 @@ class taskController {
     } catch (error) {
         res.status(500).jason({ message: 'Error creating task', error: error.message});
     }  
-    }     
+    }
+    
+    async task_list(req, res) {
+        try {
+            const tasks = await Task.findAll();
+
+            res.status(200).json({ 
+                message: 'Tareas encontradas',
+                 list: tasks
+            })
+        } catch (error) {
+            res.status(500)({ message: 'Error finding tasks', error: error.message});
+        }
+    }
 }
 
 module.exports = new taskController();
